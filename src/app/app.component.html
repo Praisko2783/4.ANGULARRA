@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>direktiba:IF</title>
+</head>
+<body>
+  <h1 style="text-align:center;">
+    ERABILTZAILEAK ERROLDATZEN ((IF direktiba))
+  </h1>
+  <form style="text-align:center;" action="">
+    <p>Hasieran 'eroldatzeko zain' eskaera bidali eta esaldia aldatu *ngif</p>
+    <input type="text" name="izena" [(ngModel)]="izena"><br><br>
+    <input type="text" name="deitura" [(ngModel)]="deitura">
+    <p>Deitura 'Biain' bada ((more+azpimarra+itzala+lodiera)) agertuko da, [ngClass] bestela beltz </p>
+    <input type="text" name="ardura" [(ngModel)]="ardura">
+    <p>Ardura 'Zuzendaria' bada gorri agertuko da, [ngStyle] bestela urdin </p>
+    <input type="submit" name="ERROLDATU" (click)="erroldatu()">
+  </form>
+  <br>
+  <P style="text-align:center;" *ngIf="erroldatua; else erroldaGabea">{{mezua}} : {{izena}} <span [ngClass]="{ardurarena: deitura == 'Biain' }">{{deitura}}</span>  eta haren ardura da: <span [ngStyle]="{color: ardura=='Zuzendaria' ? 'red' : 'blue'}">{{ardura}}</span></P>
+  <ng-template #erroldaGabea>
+    <p style="text-align:center;">Norbait erroldatzeko zain</p>
+  </ng-template>
+  
+  <hr>
+  
+  <ul>
+    <p style="font-size:1.2rem">Ez dut lortu [object Object] objektuen array-ko elementuekin ordezkatzea</p>
+    <li *ngFor="let kapitulua of entradas">
+      <span style="font-size:1.5rem">{{kapitulua}}</span>
+      <!-- .kapitulua{{}}-->
+    </li>
+  <br><br>
+  <p style="font-size:1.2rem">Kasu honetarako array arrunta erabili dut eta zuzen erakusten ditu elementuak</p>
+  <li *ngFor="let sarrera of sarrerak">
+    <span style="font-size:1.5rem">{{sarrera}}</span>
+  </li>
+</ul>
+</body>
+</html>
